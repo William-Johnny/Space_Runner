@@ -155,7 +155,6 @@ MonoBehaviour:
   - {fileID: 477732161}
   - {fileID: 1010849319}
   obstaclePrefab: {fileID: 8603555001927925922, guid: c84357d93cfe04e4ebeef540955b82eb, type: 3}
-  pointPrefab: {fileID: 5916191152914151244, guid: 7986d9ab5c87f4d5196628eeb3d659f7, type: 3}
   timeBetweenWaves: 1
   timeToSpawn: 2
 --- !u!4 &152695809
@@ -5729,7 +5728,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Score
+  m_text: 'Score : Input'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
