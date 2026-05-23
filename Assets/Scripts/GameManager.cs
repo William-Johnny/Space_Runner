@@ -9,19 +9,27 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] float slowness = 2f;
 
-    bool isGameEnded = false;
+    public bool isGameEnded = false;
+    public float score = 0;
 
-    void Update () {
+    void Update()
+    {
+        if (!isGameEnded)
+        {
+            score += Time.deltaTime * 10f;
 
-        if (!isGameEnded) {
-            float score = Time.timeSinceLevelLoad * 10f;
-            // Avec 0 je lui dit que je veux pas de décimal
             scoreText.SetText(score.ToString("0"));
-        } else {
-            scoreText.fontSize = 50f;
-            scoreText.color =  Color.red;
         }
-        
+        else
+        {
+            scoreText.fontSize = 50f;
+            scoreText.color = Color.red;
+        }
+    }
+
+    public void AddScore(int amount)
+    {
+        score += amount;
     }
 
     public void EndGame () {
