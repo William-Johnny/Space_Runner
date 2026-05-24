@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     public void EndGame () {
         if (!isGameEnded) {
             isGameEnded = true;
-            Debug.Log("GameOver");
 
             StartCoroutine(RestartLevel());
         }
