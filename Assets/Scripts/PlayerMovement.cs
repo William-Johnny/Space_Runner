@@ -5,20 +5,41 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody rb;
 
     [SerializeField] float sidewaysForce = 500f;
+    GameManager gameManager;
 
-    // FixedUpdate tout est synro
-    void FixedUpdate() {
-        // Time.deltaTime est independant du FrameRate du jeu.
-        // rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+    float keyHoldTime = 0f;
 
-        // Les Input il faut mieux les mettre dans le
-        // ForceMode.VelocityChange
-        if (Input.GetKey("d")) {
+    void Start() {
+        gameManager = (GameManager)FindFirstObjectByType(typeof(GameManager));
+    }
+    void FixedUpdate()
+    {
+        bool keyPressed = false;
+
+        if (Input.GetKey("d"))
+        {
             rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            keyPressed = true;
         }
 
-        if (Input.GetKey("a")) {
-            rb.AddForce(- sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+        if (Input.GetKey("a"))
+        {
+            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            keyPressed = true;
+        }
+
+        if (keyPressed)
+        {
+            keyHoldTime += Time.deltaTime;
+
+            if (keyHoldTime > 4f)
+            {
+                gameManager.EndGame();
+            }
+        }
+        else
+        {
+            keyHoldTime = 0f;
         }
     }
 }
